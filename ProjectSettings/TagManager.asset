@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Output
+  - Input
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Terrain
+  - Water
+  - UI
+  - Player
+  - Connection
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 2546049811
+    locked: 0
+  - name: Terrain
+    uniqueID: 3853873505
+    locked: 0
+  - name: Wire
+    uniqueID: 2320818415
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 829482023
+    locked: 0
+  - name: Element
+    uniqueID: 1898521573
+    locked: 0
+  - name: Effect
+    uniqueID: 640981219
+    locked: 0
