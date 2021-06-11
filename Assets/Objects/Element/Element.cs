@@ -1,9 +1,8 @@
-using NaughtyAttributes;
 using UnityEngine;
 
 public class Element : MonoBehaviour
 {
-	[ReadOnly] public bool powered = false;
+	[HideInInspector] public bool powered = false;
 
 	public void SetPower(bool state)
 	{

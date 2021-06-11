@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Mover2D))]
 public class Player : MonoBehaviour
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
 		controls.Player.Jump.performed += _ => mover.JumpDown();
 		controls.Player.Jump.canceled += _ => mover.JumpUp();
 		controls.Player.MousePos.performed += x => mousePos = Camera.main.ScreenToWorldPoint(x.ReadValue<Vector2>());
+		controls.General.Restart.performed += x => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 		controls.Player.Connect.performed += _ =>
 		{
@@ -78,7 +80,7 @@ public class Player : MonoBehaviour
 
 					outputElement?.SetPower(false);
 
-					outputElement = outputWireConnection.parent.GetComponent<Element>();
+					outputElement = outputWireConnection.GetComponent<Inlet>().master.GetComponent<Element>();
 
 					if (inputWireConnection)
 						outputElement?.SetPower(true);
@@ -120,13 +122,13 @@ public class Player : MonoBehaviour
 		if (inputWireConnection)
 		{
 			var dist = Util.DistSqr(transform.position, inputWireConnection.position);
-			mover.v2Velocity += ((Vector2)inputWireConnection.position - (Vector2)transform.position).normalized * (Mathf.Clamp(dist - maxWireLength * maxWireLength, 0, 1) * wirePullbackStrength);
+			mover.controller.rb.position += ((Vector2)inputWireConnection.position - (Vector2)transform.position).normalized * (Mathf.Clamp(dist - maxWireLength * maxWireLength, 0, 1) * wirePullbackStrength);
 		}
 
 		if (outputWireConnection)
 		{
 			var dist = Util.DistSqr(transform.position, outputWireConnection.position);
-			mover.v2Velocity += ((Vector2)outputWireConnection.position - (Vector2)transform.position).normalized * (Mathf.Clamp(dist - maxWireLength * maxWireLength, 0, 1) * wirePullbackStrength);
+			mover.controller.rb.position += ((Vector2)outputWireConnection.position - (Vector2)transform.position).normalized * (Mathf.Clamp(dist - maxWireLength * maxWireLength, 0, 1) * wirePullbackStrength);
 		}
 	}
 

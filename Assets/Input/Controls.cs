@@ -153,6 +153,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""8bf6fefa-f855-46a5-8bfd-dfff7b7d94d5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -164,6 +172,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c0ed7bd-d7a9-414d-ba5e-9d3d3308bedb"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -198,6 +217,7 @@ public class @Controls : IInputActionCollection, IDisposable
         // General
         m_General = asset.FindActionMap("General", throwIfNotFound: true);
         m_General_Pause = m_General.FindAction("Pause", throwIfNotFound: true);
+        m_General_Restart = m_General.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -305,11 +325,13 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_General;
     private IGeneralActions m_GeneralActionsCallbackInterface;
     private readonly InputAction m_General_Pause;
+    private readonly InputAction m_General_Restart;
     public struct GeneralActions
     {
         private @Controls m_Wrapper;
         public GeneralActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_General_Pause;
+        public InputAction @Restart => m_Wrapper.m_General_Restart;
         public InputActionMap Get() { return m_Wrapper.m_General; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -322,6 +344,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPause;
+                @Restart.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnRestart;
             }
             m_Wrapper.m_GeneralActionsCallbackInterface = instance;
             if (instance != null)
@@ -329,6 +354,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
             }
         }
     }
@@ -352,5 +380,6 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IGeneralActions
     {
         void OnPause(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }

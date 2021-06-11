@@ -9,7 +9,7 @@ public class Controller2D : RaycastController
 	[HideInInspector] public Vector2 v2PlayerInput;
 
 	// Cache
-	Rigidbody2D rb;
+	public Rigidbody2D rb;
 
 	public override void Start()
 	{

@@ -50,7 +50,7 @@ public class Mover2D : MonoBehaviour
 	public bool bIsGrounded { get => fGroundedMem > 0; }
 
 	// Cache
-	Controller2D controller;
+	public Controller2D controller;
 
 	void Start()
 	{
