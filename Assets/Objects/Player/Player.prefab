@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxWireLength: 5
-  wirePullbackStrength: 0.5
+  wirePullbackStrength: 0.2
   connectionMask:
     serializedVersion: 2
     m_Bits: 128
@@ -179,6 +179,7 @@ MonoBehaviour:
   v2MoveInput: {x: 0, y: 0}
   bJumpDown: 0
   bJumpUp: 0
+  controller: {fileID: 0}
 --- !u!114 &5135242403955912223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +204,7 @@ MonoBehaviour:
   fMaxSlopeAngle: 80
   DEBUG: 1
   v2PlayerInput: {x: 0, y: 0}
+  rb: {fileID: 0}
 --- !u!61 &5135242403955912222
 BoxCollider2D:
   m_ObjectHideFlags: 0

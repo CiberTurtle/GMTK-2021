@@ -4969,10 +4969,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5135242403955912226, guid: 491cdc1ccabad114bbba7b7aa4f32dfb, type: 3}
-      propertyPath: wirePullbackStrength
-      value: 0.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 491cdc1ccabad114bbba7b7aa4f32dfb, type: 3}
 --- !u!1001 &6056991275239353607

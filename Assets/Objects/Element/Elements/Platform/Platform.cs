@@ -44,7 +44,7 @@ public class Platform : Element
 					positionChange = Vector2.MoveTowards(platform.position, startPos, speed * Time.fixedDeltaTime);
 					platform.position = positionChange;
 
-					if (Util.DistSqr(platform.position, startPos) < 0.1f)
+					if (Util.DistSqr(platform.position, startPos) < 0.05f)
 					{
 						timeWaiting = 0;
 						waiting = true;
@@ -55,7 +55,7 @@ public class Platform : Element
 					positionChange = Vector2.MoveTowards(platform.position, endPos.position, speed * Time.fixedDeltaTime);
 					platform.position = positionChange;
 
-					if (Util.DistSqr(platform.position, endPos.position) < 0.1f)
+					if (Util.DistSqr(platform.position, endPos.position) < 0.05f)
 					{
 						timeWaiting = 0;
 						waiting = true;
